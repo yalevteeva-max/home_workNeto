@@ -1,6 +1,6 @@
 import os
 import pprint
-from cook_book import parse_recipe_file, get_shop_list_by_dishes
+from cookbook import parse_recipe_file, get_shop_list_by_dishes
 
 
 def get_file_info(file_path: str) -> tuple:
@@ -28,6 +28,9 @@ def merge_files(file_paths: list, output_file: str) -> None:
             output.write(f"{file_name}\n")
             output.write(f"{line_count}\n")
             output.write(content)
+            # Добавляем пустую строку между файлами (кроме последнего)
+            if file_name != files_info[-1][0]:
+                output.write("\n")
 
 
 def main():
